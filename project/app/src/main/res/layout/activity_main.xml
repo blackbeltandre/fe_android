@@ -37,6 +37,7 @@
             <EditText
                 android:id="@+id/editTextNIK"
                 android:layout_width="match_parent"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:textColor="#000" />
             <TextView

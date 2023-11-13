@@ -21,24 +21,26 @@ public class AndroidTransaction {
     public static final String TAG_TAHUN_LULUS = "thn_lulus";
     public static final String TAG_ASAL_SEKOLAH = "asal_sekolah";
     public static final String TAG_ASAL_WILAYAH = "asal_wilayah";
+    public static final String TAG_EMAIL = "email";
     public static final String TAG_FOTO= "foto";
     public static final String TAG_FLAG = "flag";
     public static final String TAG_ID = "id";
 
     public static final String PARAM_ID = "id";
-    public static final String KEY_EMP_NAMA_LENGKAP = "nama_lengkap";
-    public static final String KEY_EMP_TEMPAT_LAHIR = "tempat_lahir";
-    public static final String KEY_EMP_TANGGAL_LAHIR = "tanggal_lahir";
-    public static final String KEY_EMP_NO_HP = "no_hp";
-    public static final String KEY_EMP_EMAIL = "email";
-    public static final String KEY_EMP_NIK = "nik";
-    public static final String KEY_EMP_PEMINATAN_JURUSAN = "peminatan_jurusan";
-    public static final String KEY_EMP_TAHUN_LULUS = "thn_lulus";
-    public static final String KEY_EMP_NILAI_AKHIR = "nilai_akhir";
-    public static final String KEY_EMP_ASAL_SEKOLAH = "asal_sekolah";
-    public static final String KEY_EMP_ASAL_WILAYAH = "asal_wilayah";
+    public static final String KEY_NAMA_LENGKAP = "nama_lengkap";
+    public static final String KEY_TEMPAT_LAHIR = "tempat_lahir";
+    public static final String KEY_TANGGAL_LAHIR = "tanggal_lahir";
+    public static final String KEY_NO_HP = "no_hp";
+    public static final String KEY_EMAIL = "email";
+    public static final String KEY_NIK = "nik";
+    public static final String KEY_PEMINATAN_JURUSAN = "peminatan_jurusan";
+    public static final String KEY_TAHUN_LULUS = "thn_lulus";
+    public static final String KEY_NILAI_AKHIR = "nilai_akhir";
+    public static final String KEY_ASAL_SEKOLAH = "asal_sekolah";
+    public static final String KEY_ASAL_WILAYAH = "asal_wilayah";
     public static final String KEY_FOTO = "foto";
     public static final String KEY_FLAG = "flag";
+
     public static String id;
     public static String email;
     public static String nik;
