@@ -1,13 +1,16 @@
 package ac.id.itech.registrasi;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,19 +18,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.util.HashMap;
-import java.util.Map;
-import android.app.DatePickerDialog;
-import android.text.InputType;
-import android.widget.DatePicker;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -133,49 +137,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String asal_sekolah = editTextASAL_SEKOLAH.getText().toString().trim();
         final String asal_wilayah = editTextASAL_WILAYAH.getText().toString().trim();
 
-        if(isValidemail(email) &&isValidnama_lengkap(nama_lengkap) && isValidtempat_lahir(tempat_lahir)){
-            pDialog.setMessage("Register Process...");
-//            StringRequest stringRequest = new StringRequest(Request.Method.POST, AndroidTransaction.URL_INSERT_REGISTRASI,
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                        if (response.contains(AndroidTransaction.KEY_EMAIL)) {
-//                            AndroidTransaction.email=editTextEMAIL.getText().toString().trim();
-//                            Log.e("Sukses", editTextEMAIL.getText().toString().trim());
-//                            alert.showAlertDialog(MainActivity.this, "GAGAL ", "Email sudah terdaftar, coba email yang lain", false);
-//                        }
-//                        else
-//                        {
-//                            Log.e("Gagal", editTextEMAIL.getText().toString().trim());
-//                            alert.showAlertDialog(MainActivity.this, "SUKSES ", "Data berhasil disimpan", false);
-//                        }
-//                    }},
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            alert.showAlertDialog(MainActivity.this, " GAGAL", "Silahkan coba lagi.", false);
-//                            hideDialog();
-//                        }
-//                    }) {
-//                @Override
-//                protected Map<String, String> getParams() throws AuthFailureError {
-//                    Map<String, String> params = new HashMap<>();
-//                    Map<String, String> hashMap = new HashMap<>();
-//                    hashMap.put(AndroidTransaction.KEY_NAMA_LENGKAP, nama_lengkap);
-//                    hashMap.put(AndroidTransaction.KEY_NIK, nik);
-//                    hashMap.put(AndroidTransaction.KEY_NILAI_AKHIR, nilai_akhir);
-//                    hashMap.put(AndroidTransaction.KEY_PEMINATAN_JURUSAN, peminatan_jurusan);
-//                    hashMap.put(AndroidTransaction.KEY_TAHUN_LULUS, thn_lulus);
-//                    hashMap.put(AndroidTransaction.KEY_ASAL_SEKOLAH, asal_sekolah);
-//                    hashMap.put(AndroidTransaction.KEY_ASAL_WILAYAH, asal_wilayah);
-//                    hashMap.put(AndroidTransaction.KEY_TEMPAT_LAHIR, tempat_lahir);
-//                    hashMap.put(AndroidTransaction.KEY_TANGGAL_LAHIR, tanggal_lahir);
-//                    hashMap.put(AndroidTransaction.KEY_NO_HP, no_hp);
-//                    hashMap.put(AndroidTransaction.KEY_EMAIL, email);
-//                    return hashMap;
-//                }
-//            };
-//            Volley.newRequestQueue(this).add(stringRequest);
+        if(isValidemail(email) &&isValidnama_lengkap(nama_lengkap) && isValidtempat_lahir(tempat_lahir)) {
+            showDialog();
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, AndroidTransaction.URL_INSERT_REGISTRASI,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                        if (response.contains(AndroidTransaction.KEY_EMAIL)) {
+                            AndroidTransaction.email=editTextEMAIL.getText().toString().trim();
+                            Log.e("Sukses", editTextEMAIL.getText().toString().trim());
+                            alert.showAlertDialog(MainActivity.this, "GAGAL ", "Email sudah terdaftar, coba email yang lain", false);
+                        }
+                        else
+                        {
+                            Log.e("Gagal", editTextEMAIL.getText().toString().trim());
+                            alert.showAlertDialog(MainActivity.this, "SUKSES ", "Data berhasil disimpan", false);
+                        }
+                    }},
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            alert.showAlertDialog(MainActivity.this, " GAGAL", "Silahkan coba lagi.", false);
+                            hideDialog();
+                        }
+                    }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    Map<String, String> hashMap = new HashMap<>();
+                    hashMap.put(AndroidTransaction.KEY_NAMA_LENGKAP, nama_lengkap);
+                    hashMap.put(AndroidTransaction.KEY_NIK, nik);
+                    hashMap.put(AndroidTransaction.KEY_NILAI_AKHIR, nilai_akhir);
+                    hashMap.put(AndroidTransaction.KEY_PEMINATAN_JURUSAN, peminatan_jurusan);
+                    hashMap.put(AndroidTransaction.KEY_TAHUN_LULUS, thn_lulus);
+                    hashMap.put(AndroidTransaction.KEY_ASAL_SEKOLAH, asal_sekolah);
+                    hashMap.put(AndroidTransaction.KEY_ASAL_WILAYAH, asal_wilayah);
+                    hashMap.put(AndroidTransaction.KEY_TEMPAT_LAHIR, tempat_lahir);
+                    hashMap.put(AndroidTransaction.KEY_TANGGAL_LAHIR, tanggal_lahir);
+                    hashMap.put(AndroidTransaction.KEY_NO_HP, no_hp);
+                    hashMap.put(AndroidTransaction.KEY_EMAIL, email);
+                    return hashMap;
+                }
+            };
+            Volley.newRequestQueue(this).add(stringRequest);
         }
     }
     private void showDialog() {

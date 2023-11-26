@@ -203,7 +203,39 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold|normal"
                     android:transcriptMode="normal" />
+
             </LinearLayout>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="5sp"-->
+<!--                android:layout_marginLeft="5sp"-->
+<!--                android:layout_marginRight="2sp"-->
+<!--                android:layout_marginTop="0sp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Or"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:textColorHint="#fff"-->
+<!--                android:textStyle="bold|normal" />-->
+<!--            <Button-->
+<!--                android:id="@+id/buttonList"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="5sp"-->
+<!--                android:layout_marginLeft="5sp"-->
+<!--                android:layout_marginRight="2sp"-->
+<!--                android:layout_marginTop="0sp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:background="@color/PrimaryColor"-->
+<!--                android:divider="#444"-->
+<!--                android:dividerHeight="12dp"-->
+<!--                android:drawableRight="@android:drawable/ic_input_get"-->
+<!--                android:gravity="center"-->
+<!--                android:text="List"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:textStyle="bold|normal"-->
+<!--                android:transcriptMode="normal" />-->
         </LinearLayout>
 </ScrollView>
 

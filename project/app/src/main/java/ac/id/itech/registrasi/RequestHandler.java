@@ -1,5 +1,4 @@
 package ac.id.itech.registrasi;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -14,38 +13,37 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-
 public class RequestHandler {
-    //Method to send httpPostRequest
-    //This method is taking two arguments
-    //First argument is the URL of the script to which we will send the request
-    //Other is an HashMap with name value pairs containing the data to be send with the request
+    //Metode Untuk mengirim httpPostRequest
+    //Metode ini mengambil 2 Argumen
+    //Metode Pertama adalah URL dari Skrip yang digunakan untuk mengirimkan permintaan
+    //Yang lainnya adalah HashMap dengan nilai pasangan nama yang berisi data yang akan dikirim dengan permintaan
     public String sendPostRequest(String requestURL,
                                   HashMap<String, String> postDataParams) {
-        //Creating a URL
+        //Membuat URL
         URL url;
 
-        //StringBuilder object to store the message retrieved from the server
+        //Objek StringBuilder untuk menyimpan pesan diambil dari server
         StringBuilder sb = new StringBuilder();
         try {
-            //Initializing Url
+            //Inisialisasi URL
             url = new URL(requestURL);
 
-            //Creating an httmlurl connection
-            HttpURLConnection conn=(HttpURLConnection) url.openConnection();
+            //Membuat Koneksi HttpURLConnection
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-            //Configuring connection properties
+            //Konfigurasi koneksi
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
 
-            //Creating an output stream
+            //Membuat Keluaran Stream
             OutputStream os = conn.getOutputStream();
 
-            //Writing parameters to the request
-            //We are using a method getPostDataString which is defined below
+            //Menulis Parameter Untuk Permintaan
+            //Kita menggunakan metode getPostDataString yang didefinisikan di bawah ini
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
             writer.write(getPostDataString(postDataParams));
@@ -103,21 +101,7 @@ public class RequestHandler {
         }
         return sb.toString();
     }
-    public String sendGetRequests(String requestURL){
-        StringBuilder sb =new StringBuilder();
-        try {
-            URL url = new URL(requestURL);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-            String s;
-            while((s=bufferedReader.readLine())!=null){
-                sb.append(s+"\n");
-            }
-        }catch(Exception e){
-        }
-        return sb.toString();
-    }
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();
         boolean first = true;
